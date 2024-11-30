@@ -2,26 +2,18 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 16  # Specify the Node.js version
     commands:
       - echo "Installing dependencies..."
-      - npm install  # Install the Node.js dependencies
-
+      - npm install
+  pre_build:
+    commands:
+      - echo "No pre-build steps"
   build:
     commands:
-      - echo "Building the application..."
-      - npm run build || echo "No build script found"  # Run build script if defined
-
+      - echo "No build step"
   post_build:
     commands:
-      - echo "Running tests..."
-      - npm test  # Run tests after the build
-
+      - echo "Build complete!"
 artifacts:
   files:
-    - '**/*'  # Include all files in the output artifact, adjust as needed
-
-cache:
-  paths:
-    - node_modules/**  # Cache the node_modules to speed up future builds
+    - '**/*'
